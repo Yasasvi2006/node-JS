@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Catalog</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: lightblue;
+            text-align: center;
+            padding: 20px;
+        }
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .book {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            width: 100px;
+            height: auto;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover{
+            background :#003cff
+        }
+    </style>
+</head>
+<body>
+
+    <h2>BOOK CATALOG</h2>
+
+    <div class="catalog">
+        <div class="book">
+            <img src="img1.jpg">
+            <p><b>Data Structures</b></p>
+            <p>Price: $800</p>
+        </div>
+
+        <div class="book">
+            <img src="img2.jpg">
+            <p><b>Python Programming</b></p>
+            <p>Price: $200</p>
+        </div>
+
+        <div class="book">
+            <img src="img3.jpg">
+            <p><b>Quantum Computing</b></p>
+            <p>Price: $250</p>
+        </div>
+
+        <div class="book">
+            <img src="img4.jpg">
+            <p><b>Computer Organization</b></p>
+            <p>Price: $400</p>
+        </div>
+
+        <div class="book">
+            <img src="img5.jpg">
+            <p><b>Operating Systems</b></p>
+            <p>Price: $500</p>
+        </div>
+    </div>
+
+    <form action="cart.html">
+        <input type="submit" class="btn" value="Proceed to Buy">
+    </form>
+
+</body>
+</html>

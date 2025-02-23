@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(251, 253, 254);
+            text-align: center;
+        }
+        .error {
+            color: rgb(81, 0, 255);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Login Page</h2>
+
+    <form action="catalog.html" onsubmit="return validateForm()">
+        <label for="uname">Username:</label>
+        <input type="text" id="uname" name="uname"><br><br>
+        
+        <label for="pwd">Password:</label>
+        <input type="password" id="pwd" name="pwd"><br><br>
+
+        <div class="error" id="error-message"></div>
+
+        <input type="submit" value="Login">
+    </form>
+
+    <script>
+        function validateForm() {
+            const username = document.getElementById("uname").value.trim();
+            const pwd = document.getElementById("pwd").value.trim();
+            const errorMess = document.getElementById("error-message");
+
+            errorMess.innerText = "";
+
+            if (username === "" || pwd === "") {
+                errorMess.innerText = "Both username and password are required";
+                return false;
+            }
+            if (pwd.length < 8) {
+                errorMess.innerText = "Password must be at least 8 characters";
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>

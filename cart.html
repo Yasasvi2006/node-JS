@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: lightblue;
+            text-align: center;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select {
+            width: 200px;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover{
+            background:#0d00ff
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Shopping Cart</h2>
+
+    <form id="orderForm">
+        <div class="form-group">
+            <label for="bname">Book Name:</label>
+            <input type="text" id="bname" name="bname" required>
+        </div>
+
+        <div class="form-group">
+            <label for="qty">Quantity:</label>
+            <select name="qty" id="qty" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn">Click To Proceed</button>
+    </form>
+
+    <script>
+        document.getElementById("orderForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Order is placed!");
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign-Up Page</title>
+    <h2><b><center>Registration Page</center></b></h2>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            background-color: rgb(243, 244, 245);
+        }
+        .form-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-group label {
+            margin-right: 10px;
+        }
+        .form-group input {
+            width: 200px;
+            padding: 5px;
+        }
+        .error {
+            color: rgb(0, 17, 255);
+            text-align: center;
+        }
+        .success {
+            color: green;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="login.html" id="signup" method="post">
+        <center>
+            <div class="form-group">
+                <label for="uname">Username:</label>
+                <input type="text" id="uname" name="uname"><br><br>
+            </div>
+            <div class="error" id="uerror"></div>
+
+            <div class="form-group">
+                <label for="mailid">Email id:</label>
+                <input type="text" id="mailid" name="mailid"><br><br>
+            </div>
+
+            <div class="form-group">
+                <label for="mobno">Mobile No:</label>
+                <input type="text" id="mobno" name="mobno"><br><br>
+            </div>
+            <div class="error" id="moberror"></div>
+
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="text" id="pwd" name="pwd"><br><br>
+            </div>
+            <div class="error" id="pwderror"></div>
+
+            <input type="submit" value="Submit">
+        </center>
+    </form>
+
+    <div class="success" id="successmessage"></div>
+
+    <script>
+        document.getElementById("signup").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Getting form values
+            const uname = document.getElementById("uname").value.trim();
+            const pwd = document.getElementById("pwd").value.trim();
+
+            // Error elements
+            const uerror = document.getElementById("uerror");
+            const pwderror = document.getElementById("pwderror");
+            const successmess = document.getElementById("successmessage");
+
+            // Reset errors
+            uerror.innerText = "";
+            pwderror.innerText = "";
+            successmess.innerText = "";
+
+            let isValid = true;
+
+            // Username validation
+            const unamepatt = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]+$/;
+            if (!unamepatt.test(uname)) {
+                uerror.innerText = "Incorrect username format";
+                isValid = false;
+            }
+
+            // Password validation
+            if (pwd.length < 8) {
+                pwderror.innerText = "Incorrect password format";
+                isValid = false;
+            }
+
+            // Success Message
+            if (isValid) {
+                successmess.innerText = "Sign up successful!";
+                setTimeout(() => {
+                    document.getElementById("signup").submit();
+                }, 2000);
+            }
+        });
+    </script>
+
+</body>
+</html>
