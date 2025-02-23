@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            width: 350px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Movie Ticket Booking</h2>
+        <form id="bookingForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+            <div id="nameError" class="error"></div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <div id="emailError" class="error"></div>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            <div id="phoneError" class="error"></div>
+
+            <label for="movie">Select Movie:</label>
+            <select id="movie" name="movie">
+                <option value="">-- Select a Movie --</option>
+                <option value="movie1">Inception</option>
+                <option value="movie2">Avatar</option>
+                <option value="movie3">Interstellar</option>
+                <option value="movie4">The Dark Knight</option>
+            </select>
+            <div id="movieError" class="error"></div>
+
+            <label for="timing">Select Timing:</label>
+            <select id="timing" name="timing">
+                <option value="">-- Select a Time --</option>
+                <option value="10AM">10:00 AM</option>
+                <option value="1PM">1:00 PM</option>
+                <option value="4PM">4:00 PM</option>
+                <option value="7PM">7:00 PM</option>
+            </select>
+            <div id="timingError" class="error"></div>
+
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("bookingForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let isValid = true;
+
+            // Name Validation
+            const name = document.getElementById("name").value.trim();
+            if (name === "") {
+                document.getElementById("nameError").textContent = "Name is required.";
+                isValid = false;
+            } else {
+                document.getElementById("nameError").textContent = "";
+            }
+
+            // Email Validation
+            const email = document.getElementById("email").value.trim();
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                document.getElementById("emailError").textContent = "Enter a valid email.";
+                isValid = false;
+            } else {
+                document.getElementById("emailError").textContent = "";
+            }
+
+            // Phone Number Validation
+            const phone = document.getElementById("phone").value.trim();
+            const phonePattern = /^[6-9]\d{9}$/;
+            if (!phone.match(phonePattern)) {
+                document.getElementById("phoneError").textContent = "Enter a valid 10-digit phone number.";
+                isValid = false;
+            } else {
+                document.getElementById("phoneError").textContent = "";
+            }
+
+            // Movie Selection Validation
+            const movie = document.getElementById("movie").value;
+            if (movie === "") {
+                document.getElementById("movieError").textContent = "Please select a movie.";
+                isValid = false;
+            } else {
+                document.getElementById("movieError").textContent = "";
+            }
+
+            // Timing Selection Validation
+            const timing = document.getElementById("timing").value;
+            if (timing === "") {
+                document.getElementById("timingError").textContent = "Please select a time.";
+                isValid = false;
+            } else {
+                document.getElementById("timingError").textContent = "";
+            }
+
+            // Submit if valid
+            if (isValid) {
+                alert("Your movie ticket has been booked successfully!");
+                document.getElementById("bookingForm").reset();
+            }
+        });
+    </script>
+
+</body>
+</html>
